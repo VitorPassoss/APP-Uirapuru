@@ -1,17 +1,86 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+        Entradas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="action">
+    <ion-button expand="full" (click)="setOpen(true)">
+
+      Registrar Entrada
+  
+    </ion-button>
+  </div>
+
+
+  <ion-content color="light">
+    <ion-list [inset]="true" >
+      
+      <ion-item *ngFor="let item of entradas">
+        
+              <ion-label>
+                {{ item.tipo_insumo.nome }} 
+              </ion-label>
+           
+              {{ item.quantidade }}/{{ item.tipo_insumo.grandeza }}
+           
+       
+      </ion-item>
+      
+    </ion-list>
+  </ion-content>
+
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Registrar entrada</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <form [formGroup]="entradaForm">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                  <ion-item>
+                    <ion-select  formControlName="tipo_insumo" aria-label="Tipo Insumo" placeholder="Tipo insumo">
+                      <ion-select-option *ngFor="let insumo of insumos" [value]="insumo.id">{{ insumo.nome }}</ion-select-option>
+  
+                    </ion-select>
+                  </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-select formControlName="fornecedor" aria-label="Fornecedor" placeholder="Fornecedor">
+                    <ion-select-option *ngFor="let fornecedor of fornecedores" [value]="fornecedor.id">{{ fornecedor.nome }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-input type="number"  formControlName="quantidade" label="Quantidade" label-placement="floating" fill="outline" placeholder="Quantidade"></ion-input>
+  
+              </ion-col>
+              <ion-col size="6">
+                <ion-input type="number" formControlName="valor"  label="Valor" label-placement="floating" fill="outline" placeholder="Valor"></ion-input>
+              </ion-col>
+  
+              <ion-col size="12">
+                <ion-button (click)="submitForm()" expand="block">Salvar</ion-button> 
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+        
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 </ion-content>
