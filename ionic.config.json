@@ -1,0 +1,7 @@
+{
+  "name": "bomgosto-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
