@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlApi: 'http://localhost:8000/api/v1'
+  urlApi: 'https://uirapuruapi.online/api/v1'
 };
 
 /*
