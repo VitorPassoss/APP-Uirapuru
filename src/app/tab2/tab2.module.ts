@@ -9,7 +9,6 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { TextMaskModule } from 'angular2-text-mask';
 
 
 @NgModule({
@@ -21,8 +20,6 @@ import { TextMaskModule } from 'angular2-text-mask';
     Tab2PageRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    TextMaskModule
-
   ],
   declarations: [Tab2Page]
 })
